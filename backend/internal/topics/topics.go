@@ -6,6 +6,9 @@ type (
 	// PkgTopics is the interfaces abstraction for any package that import it
 	// to interact with this package
 	PkgTopics interface {
+		CreateTopic(string) (Topic, error)
+		List(int64, int64) ([]Topic, error)
+		Upvote(int64) error
 	}
 
 	// pkgTopics is the
@@ -47,17 +50,17 @@ func New() PkgTopics {
 
 // CreateTopic is for creating new topics
 // will return created Topic object
-func (pkg *pkgTopics) CreateTopic(title string) Topic {
-
+func (pkg *pkgTopics) CreateTopic(title string) (Topic, error) {
+	return Topic{}, nil
 }
 
 // List will get the list of the topic
 // sorted by upvotes
-func (pkg *pkgTopics) List(take, skip int64) []Topic {
-
+func (pkg *pkgTopics) List(take, skip int64) ([]Topic, error) {
+	return []Topic{}, nil
 }
 
-// GetTopic is for get single topic data based of the id
-func (pkg *pkgTopics) GetTopic(id int64) Topic {
-
+// Upvote is for add 1 upvote to certain topic
+func (pkg *pkgTopics) Upvote(tID int64) error {
+	return nil
 }
