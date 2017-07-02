@@ -24,10 +24,11 @@ func TestCreate(t *testing.T) {
 		},
 
 		// topic with 256 char long title
+		// since is invalid expect the id = 0
 		{
 			"another topic but is invalid because the title is too looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong",
 			true,
-			1,
+			0,
 		},
 
 		// topic with 255 char ling title
@@ -116,8 +117,8 @@ func TestUpvote(t *testing.T) {
 
 func TestList(t *testing.T) {
 	testCase := []struct {
-		Take       int64
-		Skip       int64
+		Take       int
+		Skip       int
 		ExpectData []Topic
 		WillError  bool
 	}{
@@ -130,21 +131,25 @@ func TestList(t *testing.T) {
 					1,
 					"another topic with 255 char title loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong",
 					5,
+					0,
 				},
 				Topic{
 					2,
 					"third topic",
 					3,
+					1,
 				},
 				Topic{
 					3,
 					"fourth topic",
 					1,
+					2,
 				},
 				Topic{
 					0,
 					"first topic",
 					0,
+					3,
 				},
 			},
 			false,
