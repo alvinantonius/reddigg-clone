@@ -25,13 +25,25 @@ body{
 	float: left;
 }
 
-#new-topic {
+
+#new-topic-form{
 	float: right;
+	margin-top: 40px;
+}
+#new-topic-title{
+	float: left;
+	font-size: 18px;
+	height: 40px;
+	width: 380px;
+	margin-right: 10px;
+	padding-left: 17px;
+}
+#new-topic {
 	background-color: #989898;
 	color : #fefefe;
-	padding: 10px 20px;
-	margin-top: 40px;
+	padding: 14px 20px;
 	cursor: pointer;
+	float: left;
 }
 
 #new-topic:hover, .topic-add-upvote:hover{
