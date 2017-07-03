@@ -91,9 +91,9 @@ func ListTopic(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		page = 1
 	}
 
-	// set default perPage value to 10
+	// set default perPage value to 20
 	if perPage == 0 {
-		perPage = 10
+		perPage = 20
 	}
 
 	skip := (page - 1) * perPage

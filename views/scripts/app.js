@@ -6,7 +6,7 @@ app.controller("topicsController", function($scope, $http) {
 	$scope.newTitle = "";
 
 	$scope.GetList = function(page) {
-		$http.get("/api/v1/topics?page="+page+"&per_page=5").then(function(response){
+		$http.get("/api/v1/topics?page="+page+"&per_page=20").then(function(response){
 			$scope.topicList = response.data.data;
 			$scope.currPage = page;
 		})
