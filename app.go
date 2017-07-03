@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/alvinantonius/reddigg-clone/backend/cmd/app/handler"
+	"github.com/alvinantonius/reddigg-clone/handler"
 
 	"github.com/julienschmidt/httprouter"
 )
@@ -23,7 +23,7 @@ func main() {
 	router.POST("api/v1/topic/:topic_id/upvote", handler.Upvote)
 
 	// route for frontend
-	router.ServeFiles("/app/*filepath", http.Dir("../../../frontend"))
+	router.ServeFiles("/app/*filepath", http.Dir("views"))
 
 	log.Fatal(http.ListenAndServe(":8080", router))
 }

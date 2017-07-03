@@ -45,11 +45,17 @@ func init() {
 	tSequence = 0
 	data = make(map[int64]*Topic)
 	descSorted = []*Topic{}
+
 }
 
 // New is for creating our new package obj
 func New() PkgTopics {
-	return &pkgTopics{}
+	pkg := pkgTopics{}
+
+	// populate data with 1 topic
+	pkg.CreateTopic("first topic")
+
+	return &pkg
 }
 
 // CreateTopic is for creating new topics
