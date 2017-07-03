@@ -42,7 +42,7 @@ DataType = x-www-form-urlencoded
 	params : -title
 */
 func NewTopic(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-	title := r.Form.Get("title")
+	title := r.FormValue("title")
 
 	// if title not defined
 	if len(title) == 0 {
@@ -62,7 +62,7 @@ func NewTopic(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 
 	// write result
 	res := Response{Data: topic}
-	res.Links.Self = r.RequestURI
+	res.Links.Self = r.Host + r.RequestURI
 	jsonByte, _ := json.Marshal(res)
 	w.Write(jsonByte)
 
@@ -109,7 +109,7 @@ func ListTopic(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 
 	// write result
 	res := Response{Data: data}
-	res.Links.Self = r.RequestURI
+	res.Links.Self = r.Host + r.RequestURI
 	jsonByte, _ := json.Marshal(res)
 	w.Write(jsonByte)
 
