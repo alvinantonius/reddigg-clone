@@ -52,9 +52,6 @@ func init() {
 func New() PkgTopics {
 	pkg := pkgTopics{}
 
-	// populate data with 1 topic
-	pkg.CreateTopic("first topic")
-
 	return &pkg
 }
 
