@@ -123,25 +123,30 @@ func (pkg *pkgTopics) Upvote(tID int64) error {
 		// add upvote
 		topic.Upvotes++
 
-		// if not on top position
-		if topic.sortIndex > 0 {
-			// compare current uppvotes to upper sort index
-			// if larger, swap position
-			if topic.Upvotes > descSorted[topic.sortIndex-1].Upvotes {
-				// save current position to temp variable
-				temp := topic.sortIndex
+		for {
+			// if not on top position
+			if topic.sortIndex > 0 {
+				// compare current uppvotes to upper sort index
+				// if larger, swap position
+				if topic.Upvotes > descSorted[topic.sortIndex-1].Upvotes {
+					// save current position to temp variable
+					temp := topic.sortIndex
 
-				// swap to one topic above it
-				topic.sortIndex = temp - 1
-				descSorted[temp-1].sortIndex = temp
+					// swap to one topic above it
+					topic.sortIndex = temp - 1
+					descSorted[temp-1].sortIndex = temp
 
-				// swap position in descSorted slice
-				tempTopic := descSorted[temp-1]
-				descSorted[temp-1] = topic
-				descSorted[temp] = tempTopic
+					// swap position in descSorted slice
+					tempTopic := descSorted[temp-1]
+					descSorted[temp-1] = topic
+					descSorted[temp] = tempTopic
+				} else {
+					break
+				}
+			} else {
+				break
 			}
 		}
-
 	} else {
 		return errors.New("topic id not found")
 	}

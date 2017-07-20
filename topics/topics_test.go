@@ -51,6 +51,27 @@ func TestCreate(t *testing.T) {
 			false,
 			3,
 		},
+
+		// fifth normal topic
+		{
+			"fifth topic",
+			false,
+			4,
+		},
+
+		// sixth normal topic
+		{
+			"sixth topic",
+			false,
+			5,
+		},
+
+		// seventh normal topic
+		{
+			"seventh topic",
+			false,
+			6,
+		},
 	}
 
 	for index, test := range testCase {
@@ -100,6 +121,9 @@ func TestUpvote(t *testing.T) {
 		// give 1 upvote to topic with ID=3
 		{3, false},
 
+		// give 1 upvote to topic with ID=6
+		{6, false},
+
 		// upvote invalid topic_id
 		{10, true},
 		{-1, true},
@@ -146,10 +170,28 @@ func TestList(t *testing.T) {
 					2,
 				},
 				Topic{
+					6,
+					"seventh topic",
+					1,
+					3,
+				},
+				Topic{
 					0,
 					"first topic",
 					0,
-					3,
+					4,
+				},
+				Topic{
+					4,
+					"fifth topic",
+					0,
+					5,
+				},
+				Topic{
+					5,
+					"sixth topic",
+					0,
+					6,
 				},
 			},
 			false,
